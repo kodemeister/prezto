@@ -10,4 +10,13 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# Reduce delay when switching to Normal mode
+KEYTIMEOUT=1
+
+# Disable software flow control
+# This makes Ctrl-S and Ctrl-Q work in terminal
+stty stop undef
+stty start undef
+
+# Define an alias to manage dotfiles with bare git repository
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'

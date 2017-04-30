@@ -46,11 +46,13 @@ function prompt_paradox_end_segment {
 }
 
 function prompt_paradox_build_prompt {
+  local bg
   prompt_paradox_start_segment black default '%(?::%F{9}✘ )%(!:%F{yellow}⚡ :)%(1j:%F{14}⚙ :)%F{12}%n%F{15}@%F{13}%m%f'
   prompt_paradox_start_segment 12 black '$_prompt_paradox_pwd'
 
   if [[ -n "$git_info" ]]; then
-    prompt_paradox_start_segment 10 black '${(e)git_info[ref]}${(e)git_info[status]}'
+    [[ -n "${(e)git_info[status]}" ]] && bg="3" || bg="10"
+    prompt_paradox_start_segment "$bg" black '${(e)git_info[ref]}${(e)git_info[status]}'
   fi
 
   if [[ -n "$python_info" ]]; then

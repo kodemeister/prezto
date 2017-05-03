@@ -39,6 +39,7 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'git' \
+  'tmux' \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
@@ -210,7 +211,7 @@ zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
 #
 
 # Auto start a session when Zsh is launched in a local terminal.
-# zstyle ':prezto:module:tmux:auto-start' local 'yes'
+zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Auto start a session when Zsh is launched in a SSH connection.
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'

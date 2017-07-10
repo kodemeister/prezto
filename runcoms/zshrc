@@ -17,6 +17,3 @@ KEYTIMEOUT=1
 # This makes Ctrl-S and Ctrl-Q work in terminal
 stty stop undef
 stty start undef
-
-# Define an alias to manage dotfiles with bare git repository
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'

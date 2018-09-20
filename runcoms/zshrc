@@ -10,10 +10,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Reduce delay when switching to Normal mode
+# Reduce delay when switching to Normal mode.
 KEYTIMEOUT=1
 
-# Disable software flow control
-# This makes Ctrl-S and Ctrl-Q work in terminal
+# Disable software flow control. This makes Ctrl-S and Ctrl-Q work in terminal.
 stty stop undef
 stty start undef
+
+# Overwrite existing files when using '>' redirection.
+setopt clobber

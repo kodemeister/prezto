@@ -69,23 +69,3 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
-
-#
-# WSL (Windows Subsystem for Linux)
-#
-
-if [[ -f /proc/version ]] && grep -q "Microsoft" /proc/version; then
-  # Force tmux use /bin/zsh as the default shell instead of /bin/bash.
-  export SHELL="/bin/zsh"
-
-  # Enable access to VcXSrv/Xming.
-  export DISPLAY=":0.0"
-
-  # Fix umask value if WSL didn't set it properly.
-  # https://github.com/Microsoft/WSL/issues/352
-  [[ "$(umask)" == "000" ]] && umask 022
-
-  # Don't change priority of background processes with nice.
-  # https://github.com/Microsoft/WSL/issues/1887
-  unsetopt BG_NICE
-fi

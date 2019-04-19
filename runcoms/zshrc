@@ -24,3 +24,14 @@ stty start undef
 
 # Overwrite existing files when using '>' redirection.
 setopt clobber
+
+# Enable fuzzy search and completion via fzf.
+if [[ -d "$HOME/.config/nvim/plugged/fzf" ]]; then
+  source "$HOME/.config/nvim/plugged/fzf/shell/completion.zsh"
+  source "$HOME/.config/nvim/plugged/fzf/shell/key-bindings.zsh"
+fi
+
+# Use ripgrep to speed up fuzzy search.
+if type "rg" > /dev/null; then
+  export FZF_DEFAULT_COMMAND="rg --files --hidden --glob \"!.git/*\""
+fi

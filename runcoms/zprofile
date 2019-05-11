@@ -48,6 +48,9 @@ path=(
 )
 
 # Include user's private bin directories if they exist.
+if [[ -d "$HOME/.cabal/bin" ]]; then
+  path=("$HOME/.cabal/bin" $path)
+fi
 if [[ -d "$HOME/.local/bin" ]]; then
   path=("$HOME/.local/bin" $path)
 fi

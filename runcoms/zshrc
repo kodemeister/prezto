@@ -25,6 +25,12 @@ stty start undef
 # Overwrite existing files when using '>' redirection.
 setopt clobber
 
+# Enable GNOME Keyring for terminal applications, such as SSH.
+if [ -n "$DESKTOP_SESSION" ]; then
+  eval $(gnome-keyring-daemon --start)
+  export SSH_AUTH_SOCK
+fi
+
 # Enable fuzzy search and completion via fzf.
 if [[ -d "$HOME/.config/nvim/plugged/fzf" ]]; then
   source "$HOME/.config/nvim/plugged/fzf/shell/completion.zsh"

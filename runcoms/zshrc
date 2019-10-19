@@ -15,6 +15,10 @@ if [[ ( ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+# Setup shell aliases.
+alias nvimdiff="nvim -d"
+alias sudonvimdiff="SUDO_EDITOR='nvim -d' sudoedit"
+
 # Reduce delay when switching to Normal mode.
 KEYTIMEOUT=1
 

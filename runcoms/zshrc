@@ -10,9 +10,18 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Source ~/.zprofile for non-login interactive shell.
-if [[ ( ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
+# Add user-wide bin directories to $PATH if they exist.
+if [[ -d "$HOME/bin" ]]; then
+  path=("$HOME/bin" $path)
+fi
+if [[ -d "$HOME/.local/bin" ]]; then
+  path=("$HOME/.local/bin" $path)
+fi
+if [[ -d "$HOME/.ghcup/bin" ]]; then
+  path=("$HOME/.ghcup/bin" $path)
+fi
+if [[ -d "$HOME/.cabal/bin" ]]; then
+  path=("$HOME/.cabal/bin" $path)
 fi
 
 # Setup shell aliases.
